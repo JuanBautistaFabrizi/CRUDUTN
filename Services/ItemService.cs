@@ -5,80 +5,69 @@ using System.Threading.Tasks;
 using Infraestructura.Dtos;
 using Infraestructura.Models;
 using Microsoft.EntityFrameworkCore;
+using Infraestructura.Repositories;
+
+
 
 namespace Infraestructura.Services
 {
     public class ItemService : IItemService
     {
-        private readonly Context _context;
+        private   Item _item;
+        ItemRepository ItemRepository = new ItemRepository();
 
-        public ItemService(Context context)
+        public ItemService(Item item)
         {
-            _context = context;
+          _item = item;
         }
-
-         public async Task<List<Item>> GetAllAsync()
+        
+        public async Task<List<Item>> GetAllAsync()
         {
-            return await _context.Items.ToListAsync();
+            return await ItemRepository.GetAllAsync();
         }
-
-        public async Task<Item> GetAsync(long id)
+        public async Task< List<Item>> GetAsync(string id)
         {
-            return await _context.Items.Include(i => i.Responsible).
-                            FirstOrDefaultAsync( i => i.Id ==id);
+            return await ItemRepository.Include(id);
         }
 
         public async Task UpdateAsync(long id, ItemDTO dto)
         {
-            var item = await _context.Items.FindAsync(id);
-
-            if(item is null)
-            {
-                throw new ArgumentException("item not found");
-            }
-            
+            Item item = await ItemRepository.Find(id);
             item.Name = dto.Name;
             item.IsComplete = dto.IsComplete;
+            await ItemRepository.Save();
+        } 
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                throw new InvalidOperationException($"item {id} has been deleted");
-            }
+
+
+        public async Task<Item> Find(long id)
+        {
+            return await ItemRepository.Find(id);
         }
 
         public async Task<Item> CreateAsync(NewItemDTO dto, User appUser)
         {
-            var todoItem = new Item
+            var Item = new Item
             {
                 IsComplete = false,
                 Name = dto.Name,
                 Responsible = appUser
             };
 
-            _context.Items.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return todoItem;
+            
+            return await ItemRepository.Create(Item);
         }
         public async Task DeleteAsync(long id)
         {
-            var todoItem = await _context.Items.FindAsync(id);
-            if (todoItem == null)
-            {
-                throw new ArgumentException("item not found");
-            }
-
-            _context.Items.Remove(todoItem);
-            await _context.SaveChangesAsync();
-        }
-
-        private bool TodoItemExists(long id)
-        {
-            return _context.Items.Any(e => e.Id == id);
+            await ItemRepository.Remove(id);
         }
     }
 }
+            
+
+            
+
+       
+
+        
+        

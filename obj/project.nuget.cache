@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bJIOvq6eyhhPssXfKv3CoXx19YvXWjTlflOpLk6z9VJPoimcucqzrEWG9WFdFPHZwWMISJKFrR0/fmaYZ/+j2A==",
+  "dgSpecHash": "2ioOrb6+A+g8fwMQgZh+OcEkMQxC/730dn4JRRXHTQzz6PRseSWOMv3CYRSiyCyBBRuQWtzYVslG/uNBfHLhcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Juan Bautista\\utn\\tpBackEnd\\Infraestructura\\Infraestructura.csproj",
   "expectedPackageFiles": [
@@ -73,8 +73,10 @@
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\mysql.data\\8.0.22\\mysql.data.8.0.22.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\mysql.data.entityframeworkcore\\8.0.22\\mysql.data.entityframeworkcore.8.0.22.nupkg.sha512",
+    "C:\\Users\\Juan Bautista\\.nuget\\packages\\mysqlconnector\\1.1.0\\mysqlconnector.1.1.0.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Juan Bautista\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.0-alpha.2\\pomelo.entityframeworkcore.mysql.5.0.0-alpha.2.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Users\\Juan Bautista\\.nuget\\packages\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",

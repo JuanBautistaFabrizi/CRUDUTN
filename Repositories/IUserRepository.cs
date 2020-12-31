@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Infraestructura.Models;
 
 namespace Infraestructura.Properties
@@ -10,6 +11,6 @@ namespace Infraestructura.Properties
         void Insert(User user);
         void Update(User user);
         void Delete(int UserID);
-        void Save();
+        
     }
 }

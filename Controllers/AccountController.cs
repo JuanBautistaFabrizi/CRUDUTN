@@ -82,7 +82,7 @@ namespace Infraestructura.Controllers
                 return GenerateJwtToken(dto.Nickname, appUser);
             }else
             {
-                throw new ApplicationException("Invalid Login"); //TODO resolver con un retorno de error correcto
+                throw new ApplicationException("Invalid Login"); 
             }
         }
 
@@ -92,7 +92,7 @@ namespace Infraestructura.Controllers
         [HttpGet("{id}/todos")]
         public async Task<ActionResult<IEnumerable<ItemDTO>>> GetItemsByUser(string id)
         {
-            return await _context.Items.Where(i => i.Responsible.Id == id)
+            return await _context.Item.Where(i => i.Responsible.Id == id)
                                             .Select(item => ItemToDTO(item)).ToListAsync();
         }
 
@@ -107,7 +107,7 @@ namespace Infraestructura.Controllers
                 return NotFound("user not found");
             }
 
-            var todoItem = await _context.Items.FindAsync(todoId);
+            var todoItem = await _context.Item.FindAsync(todoId);
             if (todoItem == null)
             {
                 return NotFound("todo item not found");
@@ -142,7 +142,7 @@ namespace Infraestructura.Controllers
                 return NotFound("user not found");
             }
 
-            var todoItem = await _context.Items.Include(i => i.Responsible).FirstOrDefaultAsync(t => t.Id == todoId);
+            var todoItem = await _context.Item.Include(i => i.Responsible).FirstOrDefaultAsync(t => t.Id == todoId);
             if (todoItem == null)
             {
                 return NotFound("todo item not found");
@@ -185,7 +185,7 @@ namespace Infraestructura.Controllers
 
         private bool ItemExists(long id)
         {
-            return _context.Items.Any(e => e.Id == id);
+            return _context.Item.Any(e => e.Id == id);
         }
 
 

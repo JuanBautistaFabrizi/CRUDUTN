@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 namespace Infraestructura.Models
@@ -5,5 +6,7 @@ namespace Infraestructura.Models
     public class User: IdentityUser
     {
         public string Nickname { get; set; }
+
+        
     }
 }

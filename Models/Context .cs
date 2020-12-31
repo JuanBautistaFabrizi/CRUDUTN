@@ -10,7 +10,7 @@ namespace Infraestructura.Models
         {
         }
 
-        public DbSet<Item> Items { get; set; }
-        public DbSet<ItemList> ItemLists { get; set; }
+        public DbSet<Item> Item { get; set; }
+        
     }
 }

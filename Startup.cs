@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Infraestructura.Models;
 using Infraestructura.Services;
+using Infraestructura.Repositories;
 
 namespace Infraestructura
 {
@@ -29,11 +30,13 @@ namespace Infraestructura
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection"); 
+            services.AddDbContext<Context>(options => options.UseMySql(connectionString,new MySqlServerVersion(new Version(10, 1, 40)))); 
+                                          // mySqlOptions => mySqlOptions.CharSetBehavior(CharSetBehavior.NeverAppend)));
 
-            services.AddDbContext<Context>(opt => opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<Context>(opt => opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IItemService, ItemService>();
-            services.AddScoped<IListService, ListService>();
+            services.AddScoped <IItemRepository,ItemRepository>();
 
             //===== Add Identity ========
             services.AddIdentity<User, IdentityRole>()
